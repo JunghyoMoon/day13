@@ -22,7 +22,7 @@ const useMovies = () => {
 		const { scrollHeight, scrollTop, clientHeight } = document.documentElement;
 
 		if (scrollTop + clientHeight >= scrollHeight) {
-			setPage(page + 1);
+			setPage((page) => page + 1);
 		}
 	};
 
