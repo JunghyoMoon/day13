@@ -5,7 +5,7 @@ const useMovies = () => {
 	const [page, setPage] = useState(1);
 	const [movieList, setMovieList] = useState([]);
 
-	const getMovieList = async (pageNum = 1) => {
+	const getMovieList = async (pageNum) => {
 		try {
 			const {
 				data: {
@@ -20,7 +20,6 @@ const useMovies = () => {
 
 	const handleScroll = () => {
 		const { scrollHeight, scrollTop, clientHeight } = document.documentElement;
-		console.log(scrollHeight, scrollTop, clientHeight);
 
 		if (scrollTop + clientHeight >= scrollHeight) {
 			setPage(page + 1);
@@ -28,7 +27,6 @@ const useMovies = () => {
 	};
 
 	useEffect(() => {
-		getMovieList();
 		window.addEventListener("scroll", handleScroll);
 
 		return () => {
@@ -37,7 +35,6 @@ const useMovies = () => {
 	}, []);
 
 	useEffect(() => {
-		console.log(page);
 		getMovieList(page);
 	}, [page]);
 
